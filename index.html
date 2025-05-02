@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yellow Rectangles with Circles and Window</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #303663;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .rectangles-container {
+      position: absolute;
+      width: 200px;
+      height: 130px;
+      animation: moveCar 5s linear infinite;
+      bottom: 60px;
+      z-index: 20;
+    }
+
+    @keyframes moveCar {
+      0% {
+        left: -200px;
+      }
+
+      50% {
+        left: 100vw;
+      }
+
+      100% {
+        left: -200px;
+      }
+    }
+
+    .top-rectangle {
+      width: 60%;
+      height: 60px;
+      background-color: #f7d900;
+      position: absolute;
+      top: 0;
+      left: 20%;
+      border-radius: 5px;
+      z-index: 20;
+    }
+
+    .bottom-rectangle {
+      width: 100%;
+      height: 80px;
+      background-color: #f7d900;
+      position: absolute;
+      bottom: 0;
+      border-radius: 5px;
+      z-index: 20;
+    }
+
+    .circle-container {
+      position: absolute;
+      bottom: -15px;
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #222;
+      border-radius: 50%;
+    }
+
+    .window {
+      position: absolute;
+      width: 80px;
+      height: 50px;
+      background-color: #aee7ff;
+      top: 15px;
+      left: calc(40% - 20px);
+      border-radius: 3px;
+      z-index: 20;
+    }
+
+    .tiny-rectangle {
+      position: absolute;
+      width: 6px;
+      height: 15px;
+      background-color: #222;
+      top: -15px;
+      border-radius: 2px;
+    }
+
+    .tiny-left {
+      left: 30%;
+    }
+
+    .tiny-right {
+      right: 30%;
+    }
+
+    .long-white-rectangle {
+      position: absolute;
+      width: 110px;
+      height: 20px;
+      background-color: white;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      text-align: center;
+      line-height: 20px;
+      font-size: 18px;
+      color: black;
+    }
+
+    /* Street */
+    .street {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50px;
+      background-color: #333;
+      z-index: 1;
+    }
+
+    .street .line {
+      width: 100%;
+      height: 10px;
+      background-color: white;
+      margin-top: 10px;
+      opacity: 0.5;
+    }
+
+    /* Building */
+    .building {
+      position: absolute;
+      bottom: 50px;
+      width: 150px;
+      height: 300px;
+      background-color: #8b8b8b;
+      z-index: 0;
+      right: 100px;
+    }
+
+    .building-2 {
+      position: absolute;
+      bottom: 50px;
+      width: 150px;
+      height: 400px;
+      background-color: #666;
+      right: 0px;
+      z-index: -1;
+    }
+
+    .building-3 {
+      position: absolute;
+      bottom: 50px;
+      width: 150px;
+      height: 350px;
+      background-color: #484343;
+      right: 250px;
+      z-index: -1;
+    }
+
+    .building-4 {
+      position: absolute;
+      bottom: 50px;
+      width: 150px;
+      height: 350px;
+      background-color: #656565;
+      right: 450px;
+      z-index: -1;
+    }
+
+    .building-5 {
+      position: absolute;
+      bottom: 50px;
+      width: 150px;
+      height: 300px;
+      background-color: #b6b6b6;
+      right: 320px;
+      z-index: -1;
+    }
+
+    .building-6 {
+      position: absolute;
+      bottom: 50px;
+      width: 150px;
+      height: 300px;
+      background-color: #b6b6b6;
+      right: 320px;
+      z-index: -1;
+    }
+
+    .building-7 {
+      position: absolute;
+      bottom: 50px;
+      width: 150px;
+      height: 450px;
+      background-color: #383838;
+      right: 600px;
+      z-index: -1;
+    }
+
+    .building-8 {
+      position: absolute;
+      bottom: 50px;
+      width: 150px;
+      height: 250px;
+      background-color: #6c6c6c;
+      right: 820px;
+      z-index: 1;
+    }
+
+    .building-9 {
+      position: absolute;
+      bottom: 50px;
+      width: 150px;
+      height: 320px;
+      background-color: #9f9f9f;
+      right: 750px;
+      z-index: 1;
+    }
+
+
+    /* Window Adjustments */
+    .window-building {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: #e9ffae;
+      border-radius: 5px;
+    }
+
+    /* Updated positioning for windows */
+    .window-building:nth-child(1) {
+      left: 10%;
+      top: 50%;
+    }
+
+    .window-building:nth-child(2) {
+      left: 60%;
+      top: 50%;
+    }
+
+    .window-building:nth-child(3) {
+      left: 10%;
+      top: 30%;
+    }
+
+    .window-building:nth-child(4) {
+      left: 60%;
+      top: 30%;
+    }
+
+    .window-building:nth-child(5) {
+      left: 10%;
+      top: 10%;
+    }
+
+    .window-building:nth-child(6) {
+      left: 60%;
+      top: 10%;
+    }
+
+    .window-building:nth-child(7) {
+      left: 10%;
+      top: 70%;
+    }
+
+    .window-building:nth-child(8) {
+      left: 60%;
+      top: 70%;
+    }
+
+    .pole-wrapper {
+      transform: rotate(-15deg);
+      transform-origin: bottom center;
+      position: absolute;
+      right: 850px;
+    }
+
+    .pole {
+      width: 10px;
+      height: 400px;
+      background-color: #555;
+      border-radius: 5px;
+      position: relative;
+    }
+
+    .flag {
+      width: 180px;
+      height: 100px;
+      background: repeating-linear-gradient(to bottom,
+          #b22234,
+          #b22234 7.69%,
+          #fff 7.69%,
+          #fff 15.38%);
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      transform-origin: left center;
+      transform: rotate(0deg);
+      animation: wave 2s infinite ease-in-out, tilt 0s infinite linear;
+    }
+
+    .canton {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 72px;
+      height: 53.8px;
+      background-color: #3c3b6e;
+    }
+
+    @keyframes wave {
+
+      0%,
+      100% {
+        transform: rotate(0deg) translateY(0px);
+      }
+
+      50% {
+        transform: rotate(0deg) translateY(5px);
+      }
+    }
+
+    .firework {
+      position: absolute;
+    }
+
+    .explosion {
+      position: absolute;
+      left: -2px;
+      bottom: 0;
+      width: 4px;
+      height: 80px;
+      transform-origin: 50% 100%;
+      overflow: hidden;
+    }
+
+    .explosion:nth-child(1) {
+      transform: rotate(0deg) translateY(-15px);
+    }
+
+    .explosion:nth-child(2) {
+      transform: rotate(30deg) translateY(-15px);
+    }
+
+    .explosion:nth-child(3) {
+      transform: rotate(60deg) translateY(-15px);
+    }
+
+    .explosion:nth-child(4) {
+      transform: rotate(90deg) translateY(-15px);
+    }
+
+    .explosion:nth-child(5) {
+      transform: rotate(120deg) translateY(-15px);
+    }
+
+    .explosion:nth-child(6) {
+      transform: rotate(150deg) translateY(-15px);
+    }
+
+    .explosion:nth-child(7) {
+      transform: rotate(180deg) translateY(-15px);
+    }
+
+    .explosion:nth-child(8) {
+      transform: rotate(210deg) translateY(-15px);
+    }
+
+    .explosion:nth-child(9) {
+      transform: rotate(240deg) translateY(-15px);
+    }
+
+    .explosion:nth-child(10) {
+      transform: rotate(270deg) translateY(-15px);
+    }
+
+    .explosion:nth-child(11) {
+      transform: rotate(300deg) translateY(-15px);
+    }
+
+    .explosion:nth-child(12) {
+      transform: rotate(330deg) translateY(-15px);
+    }
+
+    .explosion::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      height: 40px;
+      background-color: #bf52f5;
+    }
+
+    @keyframes explosion {
+      0% {
+        top: 100%;
+      }
+
+      33%,
+      100% {
+        top: -50%;
+      }
+    }
+
+    /* Different firework sizes and positions */
+    #firework1 {
+      left: 20%;
+      top: 10%;
+      transform: scale(1.5);
+      z-index: -5;
+    }
+
+    #firework1 .explosion::before {
+      animation: explosion 2s ease-in-out infinite;
+      background-color: #cc00ff;
+      /* Red */
+    }
+
+    #firework2 {
+      left: 40%;
+      top: 10%;
+      transform: scale(1);
+      z-index: -5;
+    }
+
+    #firework2 .explosion::before {
+      animation: explosion 2s 0.5s ease-in-out infinite;
+      background-color: #ffdd00;
+      /* Yellow */
+    }
+
+    #firework3 {
+      left: 60%;
+      top: 15%;
+      transform: scale(1.2);
+      z-index: -5;
+    }
+
+    #firework3 .explosion::before {
+      animation: explosion 2s 1s ease-in-out infinite;
+      background-color: #00ccff;
+      /* Blue */
+    }
+
+    #firework4 {
+      left: 80%;
+      top: 10%;
+      transform: scale(1);
+      z-index: -5;
+    }
+
+    #firework4 .explosion::before {
+      animation: explosion 2s 0.8s ease-in-out infinite;
+      background-color: #00ff44;
+      /* Green */
+    }
+
+    #firework5 {
+      left: 10%;
+      top: 10%;
+      transform: scale(1.3);
+      z-index: -5;
+    }
+
+    #firework5 .explosion::before {
+      animation: explosion 2s 0.3s ease-in-out infinite;
+      background-color: #ffffff;
+      /* Pink */
+    }
+
+    #firework6 {
+      left: 50%;
+      top: 15%;
+      transform: scale(1);
+      z-index: -5;
+    }
+
+    #firework6 .explosion::before {
+      animation: explosion 2s 1.2s ease-in-out infinite;
+      background-color: #9900cc;
+      /* Purple */
+    }
+
+    #firework7 {
+      left: 75%;
+      top: 10%;
+      transform: scale(1.4);
+      z-index: -5;
+    }
+
+    #firework7 .explosion::before {
+      animation: explosion 2s 0.7s ease-in-out infinite;
+      background-color: #ff8000;
+      /* Orange */
+    }
+
+    @keyframes flickerBorder {
+      0% {
+        box-shadow: 0 0 25px rgba(255, 255, 91, 0.779);
+      }
+
+      5% {
+        border-color: #555;
+        box-shadow: none;
+      }
+
+      10% {
+        box-shadow: 0 0 25px rgba(255, 255, 91, 0.779);
+      }
+
+      15% {
+        border-color: #555;
+        box-shadow: none;
+      }
+
+      20% {
+        box-shadow: 0 0 25px rgba(255, 255, 91, 0.779);
+      }
+
+      25% {
+        border-color: #555;
+        box-shadow: none;
+      }
+
+      30%,
+      100% {
+        box-shadow: 0 0 25px rgba(255, 255, 91, 0.779);
+      }
+    }
+
+    .billboard {
+      animation: flickerBorder 10s infinite;
+    }
+
+
+    .content-billboard {
+      position: absolute;
+      right: 180px;
+      top: 10%;
+    }
+
+    .billboard-frame {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 200px;
+    }
+
+    .billboard {
+      background: linear-gradient(145deg, #333 20%, #222 100%);
+      width: 100%;
+      height: 110px;
+      border: 6px solid #555;
+      box-shadow: 0 0 25px rgba(255, 255, 91, 0.779);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #cc00ff;
+      text-align: center;
+      position: relative;
+    }
+
+    .billboard::before,
+    .billboard::after {
+      content: "";
+      position: absolute;
+      top: -12px;
+      width: 30px;
+      height: 10px;
+      background-color: #444;
+      border-radius: 4px;
+    }
+
+    .billboard::before {
+      left: 20px;
+    }
+
+    .billboard::after {
+      right: 20px;
+    }
+
+    .billboard .line1 {
+      font-size: 1em;
+      letter-spacing: 2px;
+      font-style: italic;
+      color: #ddd;
+    }
+
+    .billboard .line2 {
+      font-size: 1.6em;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .legs {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: -1px;
+      z-index: -4;
+      position: absolute;
+
+    }
+
+    .leg {
+      width: 8px;
+      height: 700px;
+      background-color: #666;
+      border-radius: 3px;
+    }
+
+    .statue-wrapper {
+      position: absolute;
+      bottom: 50px;
+      width: 160px;
+      height: 320px;
+      right: 1000px
+    }
+
+    .flame {
+      position: absolute;
+      bottom: 290px;
+      left: -30px;
+      width: 40px;
+      height: 60px;
+      background-color: gold;
+      border-radius: 50%;
+      animation: flicker 0.8s infinite alternate;
+      box-shadow: 0 0 20px gold;
+      z-index: 2;
+    }
+
+    @keyframes flicker {
+      0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+        box-shadow: 0 0 15px gold;
+      }
+
+      50% {
+        transform: scale(1.05) rotate(-2deg);
+        opacity: 0.9;
+        box-shadow: 0 0 25px #ffae00;
+      }
+
+      100% {
+        transform: scale(0.95) rotate(2deg);
+        opacity: 1;
+        box-shadow: 0 0 18px rgb(255, 136, 0);
+      }
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      bottom: 50px;
+      right: 900px;
+      z-index: -1;
+    }
+
+    .rectangle1,
+    .rectangle2,
+    .rectangle3 {
+      background-color: rgb(215, 215, 161);
+    }
+
+    .rectangle1 {
+      width: 170px;
+      height: 80px;
+      position: relative;
+    }
+
+    .rectangle2 {
+      width: 250px;
+      height: 300px;
+      position: relative;
+    }
+
+    .rectangle3 {
+      width: 300px;
+      height: 100px;
+      position: relative;
+    }
+
+    .dark-rectangle1,
+    .dark-rectangle2,
+    .dark-rectangle3,
+    .dark-rectangle4,
+    .dark-rectangle5,
+    .dark-rectangle6 {
+      position: absolute;
+      background-color: rgb(133, 133, 99);
+    }
+
+    /* Bottom two (already exist) */
+    .dark-rectangle1 {
+      width: 100px;
+      height: 100px;
+      left: 0;
+      bottom: 0;
+    }
+
+    .dark-rectangle2 {
+      width: 100px;
+      height: 100px;
+      right: 0px;
+      bottom: 0;
+    }
+
+    /* Middle two */
+    .dark-rectangle3 {
+      width: 75px;
+      height: 300px;
+      left: 0px;
+      bottom: 0px;
+    }
+
+    .dark-rectangle4 {
+      width: 75px;
+      height: 300px;
+      right: 0px;
+      bottom: 0px;
+    }
+
+    /* Top two */
+    .dark-rectangle5 {
+      width: 35px;
+      height: 80px;
+      left: 0px;
+      bottom: 0px;
+    }
+
+    .dark-rectangle6 {
+      width: 35px;
+      height: 80px;
+      right: 0px;
+      bottom: 0px;
+    }
+
+    /* Antenna */
+    .antenna {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 50px;
+      background-color: #737373;
+    }
+
+    /* Windows between dark rectangles */
+    .empire-window {
+      width: 10px;
+      height: 10px;
+      background-color: rgb(255, 255, 255);
+      margin: 5px;
+      position: absolute;
+    }
+
+    .empire-lwindow {
+      width: 10px;
+      height: 35px;
+      background-color: rgb(255, 255, 255);
+      margin: 5px;
+      margin-top: 0%;
+      margin-bottom: 0%;
+      position: absolute;
+    }
+
+    /* For Rectangle 1*/
+    .empire-window1 {
+      top: 15px;
+      left: 45px;
+    }
+
+    .empire-window2 {
+      top: 15px;
+      left: 60px;
+    }
+
+    .empire-window3 {
+      top: 15px;
+      left: 75px;
+    }
+
+    .empire-window4 {
+      top: 15px;
+      left: 90px;
+    }
+
+    .empire-window5 {
+      top: 15px;
+      left: 105px;
+    }
+
+    .empire-window6 {
+      top: 35px;
+      left: 45px;
+    }
+
+    .empire-window7 {
+      top: 35px;
+      left: 60px;
+    }
+
+    .empire-window8 {
+      top: 35px;
+      left: 75px;
+    }
+
+    .empire-window9 {
+      top: 35px;
+      left: 90px;
+    }
+
+    .empire-window10 {
+      top: 35px;
+      left: 105px;
+    }
+
+    .empire-window11 {
+      top: 55px;
+      left: 45px;
+    }
+
+    .empire-window12 {
+      top: 55px;
+      left: 60px;
+    }
+
+    .empire-window13 {
+      top: 55px;
+      left: 75px;
+    }
+
+    .empire-window14 {
+      top: 55px;
+      left: 90px;
+    }
+
+    .empire-window15 {
+      top: 55px;
+      left: 105px;
+    }
+
+    /* For rectangle 2 */
+    .empire-lwindow16 {
+      top: 15px;
+      left: 85px;
+    }
+
+    .empire-lwindow17 {
+      top: 15px;
+      left: 100px;
+    }
+
+    .empire-lwindow18 {
+      top: 15px;
+      left: 115px;
+    }
+
+    .empire-lwindow19 {
+      top: 15px;
+      left: 130px;
+    }
+
+    .empire-lwindow20 {
+      top: 15px;
+      left: 145px;
+    }
+
+    .empire-lwindow21 {
+      top: 70px;
+      left: 85px;
+    }
+
+    .empire-lwindow22 {
+      top: 70px;
+      left: 100px;
+    }
+
+    .empire-lwindow23 {
+      top: 70px;
+      left: 115px;
+    }
+
+    .empire-lwindow24 {
+      top: 70px;
+      left: 130px;
+    }
+
+    .empire-lwindow25 {
+      top: 70px;
+      left: 145px;
+    }
+
+    .empire-lwindow26 {
+      top: 135px;
+      left: 85px;
+    }
+
+    .empire-lwindow27 {
+      top: 135px;
+      left: 100px;
+    }
+
+    .empire-lwindow28 {
+      top: 135px;
+      left: 115px;
+    }
+
+    .empire-lwindow29 {
+      top: 135px;
+      left: 130px;
+    }
+
+    .empire-lwindow30 {
+      top: 135px;
+      left: 145px;
+    }
+
+    .empire-lwindow31 {
+      top: 200px;
+      left: 85px;
+    }
+
+    .empire-lwindow32 {
+      top: 200px;
+      left: 100px;
+    }
+
+    .empire-lwindow33 {
+      top: 200px;
+      left: 115px;
+    }
+
+    .empire-lwindow34 {
+      top: 200px;
+      left: 130px;
+    }
+
+    .empire-lwindow35 {
+      top: 200px;
+      left: 145px;
+    }
+
+    .empire-lwindow36 {
+      top: 260px;
+      left: 85px;
+    }
+
+    .empire-lwindow37 {
+      top: 260px;
+      left: 100px;
+    }
+
+    .empire-lwindow38 {
+      top: 260px;
+      left: 115px;
+    }
+
+    .empire-lwindow39 {
+      top: 260px;
+      left: 130px;
+    }
+
+    .empire-lwindow40 {
+      top: 260px;
+      left: 145px;
+    }
+
+    /* For Rectangle 3 */
+    .empire-window16 {
+      top: 35px;
+      left: 110px;
+    }
+
+    .empire-window17 {
+      top: 35px;
+      left: 125px;
+    }
+
+    .empire-window18 {
+      top: 35px;
+      left: 140px;
+    }
+
+    .empire-window19 {
+      top: 35px;
+      left: 155px;
+    }
+
+    .empire-window20 {
+      top: 35px;
+      left: 170px;
+    }
+
+    .empire-window21 {
+      top: 55px;
+      left: 110px;
+    }
+
+    .empire-window22 {
+      top: 55px;
+      left: 125px;
+    }
+
+    .empire-window23 {
+      top: 55px;
+      left: 140px;
+    }
+
+    .empire-window24 {
+      top: 55px;
+      left: 155px;
+    }
+
+    .empire-window25 {
+      top: 55px;
+      left: 170px;
+    }
+
+    /* For rectangle 3 */
+    .empire-lwindow16 {
+      top: 15px;
+      left: 85px;
+    }
+
+    .empire-lwindow17 {
+      top: 15px;
+      left: 100px;
+    }
+
+    .empire-lwindow18 {
+      top: 15px;
+      left: 115px;
+    }
+
+    .empire-lwindow19 {
+      top: 15px;
+      left: 130px;
+    }
+
+    .empire-lwindow20 {
+      top: 15px;
+      left: 145px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Firework elements -->
+  <div class="firework" id="firework1">
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+  </div>
+
+  <div class="firework" id="firework2">
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+  </div>
+
+  <div class="firework" id="firework3">
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+  </div>
+
+  <div class="firework" id="firework4">
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+  </div>
+
+  <div class="firework" id="firework5">
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+  </div>
+
+  <div class="firework" id="firework6">
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+  </div>
+
+  <div class="firework" id="firework7">
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+    <div class="explosion"></div>
+  </div>
+
+  <div class="rectangles-container">
+    <div class="top-rectangle"></div>
+    <div class="bottom-rectangle"></div>
+    <div class="window"></div>
+    <div class="tiny-rectangle tiny-left"></div>
+    <div class="tiny-rectangle tiny-right"></div>
+    <div class="long-white-rectangle">TAXI</div>
+    <div class="circle-container">
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+  </div>
+
+  <!-- Street -->
+  <div class="street">
+    <div class="line"></div>
+  </div>
+
+  <div class="statue-wrapper">
+    <div style="position: relative; width: 120px; height: 320px;">
+      <!-- Base -->
+      <div style="position: absolute; bottom: 0; width: 120px; height: 40px; background-color: #3b1306;"></div>
+      <div style="position: absolute; bottom: 40px; left: 10px; width: 100px; height: 20px; background-color: #3b1306;">
+      </div>
+      <div style="position: absolute; bottom: 10px; left: 35px; width: 50px; height: 20px; background-color: #b8962e;">
+      </div>
+
+      <!-- Body -->
+      <div
+        style="position: absolute; bottom: 60px; left: 30px; width: 60px; height: 180px; background-color: #6bd29c; z-index: 2;">
+      </div>
+
+      <!-- Arms -->
+      <div
+        style="position: absolute; bottom: 160px; left: 15px; width: 20px; height: 80px; background-color: #5bb88e; transform: rotate(-25deg); transform-origin: bottom; z-index: 1;">
+      </div>
+      <div
+        style="position: absolute; bottom: 160px; right: 15px; width: 20px; height: 80px; background-color: #5bb88e; transform: rotate(15deg); transform-origin: bottom; z-index: 1;">
+      </div>
+
+      <!-- Torch -->
+      <div
+        style="position: absolute; bottom: 220px; left: -20px; width: 20px; height: 90px; background-color: rgb(109, 78, 62);">
+      </div>
+      <div class="flame"></div>
+
+      <!-- Neck and Head -->
+      <div style="position: absolute; bottom: 240px; left: 46px; width: 25px; height: 20px; background-color: #5cb788;">
+      </div>
+      <div
+        style="position: absolute; bottom: 255px; left: 35px; width: 50px; height: 55px; background-color: #6bd29c; border-radius: 50%; z-index: 1;">
+      </div>
+
+      <!-- Crown spikes -->
+      <div
+        style="position: absolute; bottom: 305px; left: 55px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 20px solid #5cb788;">
+      </div>
+      <div
+        style="position: absolute; bottom: 302px; left: 71px; width: 0; height: 0; transform: rotate(30deg); border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 20px solid #5cb788;">
+      </div>
+      <div
+        style="position: absolute; bottom: 302px; left: 39px; width: 0; height: 0; transform: rotate(-30deg); border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 20px solid #5cb788;">
+      </div>
+      <div
+        style="position: absolute; bottom: 298px; left: 79px; width: 0; height: 0; transform: rotate(60deg); border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 20px solid #5cb788;">
+      </div>
+      <div
+        style="position: absolute; bottom: 298px; left: 31px; width: 0; height: 0; transform: rotate(-60deg); border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 20px solid #5cb788;">
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="antenna"></div>
+
+    <div class="rectangle1">
+      <div class="dark-rectangle5"></div>
+      <div class="dark-rectangle6"></div>
+
+      <!-- Windows for rectangle1 -->
+      <div class="empire-window empire-window1"></div>
+      <div class="empire-window empire-window2"></div>
+      <div class="empire-window empire-window3"></div>
+      <div class="empire-window empire-window4"></div>
+      <div class="empire-window empire-window5"></div>
+
+      <div class="empire-window empire-window6"></div>
+      <div class="empire-window empire-window7"></div>
+      <div class="empire-window empire-window8"></div>
+      <div class="empire-window empire-window9"></div>
+      <div class="empire-window empire-window10"></div>
+
+      <div class="empire-window empire-window11"></div>
+      <div class="empire-window empire-window12"></div>
+      <div class="empire-window empire-window13"></div>
+      <div class="empire-window empire-window14"></div>
+      <div class="empire-window empire-window15"></div>
+    </div>
+
+    <div class="rectangle2">
+      <div class="dark-rectangle3"></div>
+      <div class="dark-rectangle4"></div>
+
+      <div class="empire-lwindow empire-lwindow16"></div>
+      <div class="empire-lwindow empire-lwindow17"></div>
+      <div class="empire-lwindow empire-lwindow18"></div>
+      <div class="empire-lwindow empire-lwindow19"></div>
+      <div class="empire-lwindow empire-lwindow20"></div>
+
+      <div class="empire-lwindow empire-lwindow21"></div>
+      <div class="empire-lwindow empire-lwindow22"></div>
+      <div class="empire-lwindow empire-lwindow23"></div>
+      <div class="empire-lwindow empire-lwindow24"></div>
+      <div class="empire-lwindow empire-lwindow25"></div>
+
+      <div class="empire-lwindow empire-lwindow26"></div>
+      <div class="empire-lwindow empire-lwindow27"></div>
+      <div class="empire-lwindow empire-lwindow28"></div>
+      <div class="empire-lwindow empire-lwindow29"></div>
+      <div class="empire-lwindow empire-lwindow30"></div>
+
+      <div class="empire-lwindow empire-lwindow31"></div>
+      <div class="empire-lwindow empire-lwindow32"></div>
+      <div class="empire-lwindow empire-lwindow33"></div>
+      <div class="empire-lwindow empire-lwindow34"></div>
+      <div class="empire-lwindow empire-lwindow35"></div>
+
+      <div class="empire-lwindow empire-lwindow36"></div>
+      <div class="empire-lwindow empire-lwindow37"></div>
+      <div class="empire-lwindow empire-lwindow38"></div>
+      <div class="empire-lwindow empire-lwindow39"></div>
+      <div class="empire-lwindow empire-lwindow40"></div>
+    </div>
+
+    <div class="rectangle3">
+      <div class="dark-rectangle1"></div>
+      <div class="dark-rectangle2"></div>
+
+      <div class="empire-window empire-window16"></div>
+      <div class="empire-window empire-window17"></div>
+      <div class="empire-window empire-window18"></div>
+      <div class="empire-window empire-window19"></div>
+      <div class="empire-window empire-window20"></div>
+
+      <div class="empire-window empire-window21"></div>
+      <div class="empire-window empire-window22"></div>
+      <div class="empire-window empire-window23"></div>
+      <div class="empire-window empire-window24"></div>
+      <div class="empire-window empire-window25"></div>
+    </div>
+  </div>
+
+  <!-- Building -->
+  <div class="building">
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+  </div>
+
+  <div class="content-billboard">
+    <div class="billboard-frame">
+      <div class="billboard">
+        <div class="line1">It’s up to you,</div>
+        <div class="line2">NEW YORK</div>
+      </div>
+      <div class="legs">
+        <div class="leg"></div>
+        <div class="leg"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Second Building (Darker Gray) -->
+  <div class="building-2">
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+  </div>
+
+  <!-- Third Building (Darker Gray) -->
+  <div class="building-3">
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+  </div>
+
+  <!-- Fourth Building (Darker Gray) -->
+  <div class="building-4">
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+  </div>
+
+  <!-- Fifth Building (Darker Gray) -->
+  <div class="building-5">
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+  </div>
+
+  <!-- Sixth Building (Darker Gray) -->
+  <div class="building-6">
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+  </div>
+
+  <!-- Seventh Building (Darker Gray) -->
+  <div class="building-7">
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+  </div>
+
+  <!-- Nineth Building (Darker Gray) -->
+  <div class="building-9">
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+  </div>
+
+  <!-- Eighth Building (Darker Gray) -->
+  <div class="building-8">
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+    <div class="window-building"></div>
+  </div>
+
+
+
+  <div class="pole-wrapper">
+    <div class="pole">
+      <div class="flag">
+        <div class="canton"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
